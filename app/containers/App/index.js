@@ -13,7 +13,8 @@ import { Switch, Route } from 'react-router-dom';
 
 import LandingPage from 'containers/LandingPage/Loadable';
 import SelfIntro from 'containers/SelfIntro/Loadable';
-import FeaturePage from 'containers/FeaturePage/Loadable';
+import QuestionnaireListPage from 'containers/QuestionnaireListPage/Loadable';
+import QuestionList from 'containers/QuestionList/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
@@ -33,17 +34,18 @@ const AppWrapper = styled.div`
 export default function App() {
   return (
     <AppWrapper>
-      <Helmet
-        titleTemplate="Resume Builder"
-        defaultTitle="Resume Builder"
-      >
+      <Helmet titleTemplate="Resume Builder" defaultTitle="Resume Builder">
         <meta name="description" content="A Resume Builder application" />
       </Helmet>
       {/* <Header /> */}
       <Switch>
         <Route exact path="/" component={LandingPage} />
-        <Route path="/features" component={FeaturePage} />
         <Route path="/SelfIntro" component={SelfIntro} />
+        <Route
+          path="/QuestionnaireListPage"
+          component={QuestionnaireListPage}
+        />
+        <Route path="/QuestionList" component={QuestionList} />
       </Switch>
       {/* <Footer /> */}
       <GlobalStyle />

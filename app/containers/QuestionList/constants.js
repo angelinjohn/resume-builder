@@ -10,4 +10,3 @@
  */
 
 export const CHANGE_USERNAME = 'boilerplate/Home/CHANGE_USERNAME';
-export const UPDATE_BASIC_INFO = 'SelfIntro/UPDATE_BASIC_INFO';

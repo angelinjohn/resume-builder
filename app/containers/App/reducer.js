@@ -15,8 +15,11 @@ export const initialState = {
   loading: false,
   error: false,
   currentUser: false,
-  userData: {
-    repositories: false,
+  basicInfo: {
+    name: '',
+    email: '',
+    contact: '',
+    address: '',
   },
 };
 

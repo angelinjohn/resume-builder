@@ -14,18 +14,14 @@ import { createStructuredSelector } from 'reselect';
 
 import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
-import {
-  makeSelectRepos,
-  makeSelectLoading,
-  makeSelectError,
-} from 'containers/App/selectors';
+import { makeSelectLoading, makeSelectError } from 'containers/App/selectors';
 import H2 from 'components/H2';
 import ReposList from 'components/ReposList';
 import Input from './Input';
 import Section from './Section';
 import messages from './messages';
 import './styles.css';
-import {Link} from "react-router-dom";
+import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { loadRepos } from '../App/actions';
@@ -62,25 +58,24 @@ export function LandingPage({
     <article>
       <Helmet>
         <title>Resume Builder</title>
-        <meta
-          name="description"
-          content="An Intelligent Resume Builder"
-        />
+        <meta name="description" content="An Intelligent Resume Builder" />
       </Helmet>
       <div>
-      <Card className="text-center">
-  <Card.Header className="main-header">Resume Builder</Card.Header>
-  <Card.Body className="main-body">
-    {/* <Card.Title>Special title treatment</Card.Title>
+        <Card className="text-center">
+          <Card.Header className="main-header">Resume Builder</Card.Header>
+          <Card.Body className="main-body">
+            {/* <Card.Title>Special title treatment</Card.Title>
     <Card.Text>
       With supporting text below as a natural lead-in to additional content.
     </Card.Text> */}
-      <Link to = {`/SelfIntro`}>
-    <Button variant="primary">Get Started</Button>
-    </Link>
-  </Card.Body>
-  <Card.Footer className="text-muted main-footer">2 days ago</Card.Footer>
-</Card>
+            <Link to="/SelfIntro">
+              <Button variant="primary">Get Started</Button>
+            </Link>
+          </Card.Body>
+          <Card.Footer className="text-muted main-footer">
+            Create Intelligent Resumes!
+          </Card.Footer>
+        </Card>
       </div>
     </article>
   );
@@ -96,7 +91,6 @@ LandingPage.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  repos: makeSelectRepos(),
   username: makeSelectUsername(),
   loading: makeSelectLoading(),
   error: makeSelectError(),

@@ -27,10 +27,10 @@ const makeSelectError = () =>
     globalState => globalState.error,
   );
 
-const makeSelectRepos = () =>
+const makeSelectBasicInfo = () =>
   createSelector(
     selectGlobal,
-    globalState => globalState.userData.repositories,
+    globalState => globalState.basicInfo,
   );
 
 const makeSelectLocation = () =>
@@ -44,6 +44,6 @@ export {
   makeSelectCurrentUser,
   makeSelectLoading,
   makeSelectError,
-  makeSelectRepos,
+  makeSelectBasicInfo,
   makeSelectLocation,
 };

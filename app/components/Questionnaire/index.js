@@ -3,32 +3,33 @@ import PropTypes from 'prop-types';
 
 import List from 'components/List';
 import ListItem from 'components/ListItem';
-import LoadingIndicator from 'components/LoadingIndicator';
-import RepoListItem from 'containers/RepoListItem';
+import Form from 'react-bootstrap/Form';
 
-function ReposList({ loading, error, repos }) {
-  if (loading) {
-    return <List component={LoadingIndicator} />;
-  }
-
-  if (error !== false) {
-    const ErrorComponent = () => (
-      <ListItem item="Something went wrong, please try again!" />
+function Questionnaire({ showanswerbox, questions }) {
+  if (!showanswerbox) {
+    const QuestionAnswerView = props => (
+      <div>
+        <Form.Group controlId="exampleForm.ControlTextarea1">
+          <Form.Label>{props.item}</Form.Label>
+          <Form.Control as="textarea" rows={3} />
+        </Form.Group>
+      </div>
     );
-    return <List component={ErrorComponent} />;
-  }
+    return (
+      <Form>
+        <List items={questions} component={QuestionAnswerView} />
+      </Form>
+    );
+    return <List items={questions} component={ListItem} />;
 
-  if (repos !== false) {
-    return <List items={repos} component={RepoListItem} />;
+    return null;
   }
-
-  return null;
 }
 
-ReposList.propTypes = {
-  loading: PropTypes.bool,
+Questionnaire.propTypes = {
+  showanswerbox: PropTypes.bool,
   error: PropTypes.any,
   repos: PropTypes.any,
 };
 
-export default ReposList;
+export default Questionnaire;

@@ -15,7 +15,7 @@
  *    }
  */
 
-import { UPDATE_BASIC_INFO } from './constants';
+import { CHANGE_USERNAME } from './constants';
 
 /**
  * Changes the input field of the form
@@ -24,9 +24,9 @@ import { UPDATE_BASIC_INFO } from './constants';
  *
  * @return {object} An action object with a type of CHANGE_USERNAME
  */
-export function updateBasicInfo(formData) {
+export function changeUsername(username) {
   return {
-    type: UPDATE_BASIC_INFO,
-    formData,
+    type: CHANGE_USERNAME,
+    username,
   };
 }

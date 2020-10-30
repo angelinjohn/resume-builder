@@ -16,13 +16,17 @@ import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
 import { makeSelectLoading, makeSelectError } from 'containers/App/selectors';
 import H2 from 'components/H2';
-import ReposList from 'components/ReposList';
-import AtPrefix from './AtPrefix';
-import CenteredSection from './CenteredSection';
-import Form from './Form';
-import Input from './Input';
-import Section from './Section';
+import QuestionCard from 'components/QuestionCard';
+import './styles.css';
+import CardDeck from 'react-bootstrap/CardDeck';
+import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import messages from './messages';
+import Section from './Section';
+import Input from './Input';
+import AtPrefix from './AtPrefix';
 import { loadRepos } from '../App/actions';
 import { changeUsername } from './actions';
 import { makeSelectUsername } from './selectors';
@@ -31,7 +35,7 @@ import saga from './saga';
 
 const key = 'home';
 
-export function HomePage({
+export function QuestionnaireListPage({
   username,
   loading,
   error,
@@ -56,48 +60,41 @@ export function HomePage({
   return (
     <article>
       <Helmet>
-        <title>Home Page</title>
-        <meta
-          name="description"
-          content="A React.js Boilerplate application homepage"
-        />
+        <title>Resume Builder</title>
+        <meta name="description" content="An Intelligent Resume Builder" />
       </Helmet>
       <div>
-        <CenteredSection>
-          <H2>
-            <FormattedMessage {...messages.startProjectHeader} />
-          </H2>
-          <p>
-            <FormattedMessage {...messages.startProjectMessage} />
-          </p>
-        </CenteredSection>
-        <Section>
-          <H2>
-            <FormattedMessage {...messages.trymeHeader} />
-          </H2>
-          <Form onSubmit={onSubmitForm}>
-            <label htmlFor="username">
-              <FormattedMessage {...messages.trymeMessage} />
-              <AtPrefix>
-                <FormattedMessage {...messages.trymeAtPrefix} />
-              </AtPrefix>
-              <Input
-                id="username"
-                type="text"
-                placeholder="mxstbr"
-                value={username}
-                onChange={onChangeUsername}
+        <Card className="text-center">
+          <Card.Header className="main-header">Resume Builder</Card.Header>
+          <Card.Body className="main-body">
+            <CardDeck>
+              <QuestionCard
+                header="Tender Foot"
+                subtitle="For Newbies"
+                text=" If you are a newly grad, this should suit you."
               />
-            </label>
-          </Form>
-          <ReposList {...reposListProps} />
-        </Section>
+              <QuestionCard
+                header="Expert"
+                subtitle="For the Experienced"
+                text="If you have spent a reasonable number of years in the industry and is looking for a job switch"
+              />
+              <QuestionCard
+                header="Portfolio"
+                subtitle="For Showcasing your Projects"
+                text="Go ahead if you want to showcase your projects creatively"
+              />
+            </CardDeck>
+          </Card.Body>
+          <Card.Footer className="text-muted main-footer">
+            Create Intelligent Resumes!
+          </Card.Footer>
+        </Card>
       </div>
     </article>
   );
 }
 
-HomePage.propTypes = {
+QuestionnaireListPage.propTypes = {
   loading: PropTypes.bool,
   error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
   repos: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
@@ -130,4 +127,4 @@ const withConnect = connect(
 export default compose(
   withConnect,
   memo,
-)(HomePage);
+)(QuestionnaireListPage);
